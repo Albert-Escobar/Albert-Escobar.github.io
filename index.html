@@ -5,151 +5,215 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Albert Escobar – Visual Storyteller</title>
 
+  <!-- External CSS -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap">
+
   <style>
-    body,
-    h1,
-    h2,
-    h3 {
-      font-family: "Raleway", Arial, sans-serif;
+    body {
+      font-family: "Inter", sans-serif;
+      transition: background 0.3s, color 0.3s;
     }
 
-    h1 {
-      letter-spacing: 6px;
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+      letter-spacing: 2px;
     }
 
     .intro-text {
       max-width: 900px;
-      margin: 0 auto 60px auto;
-      line-height: 1.7;
-      font-size: 18px;
+      margin: 0 auto 80px auto;
+      line-height: 1.8;
+      font-size: 17px;
     }
 
-    .gallery img {
+    /* Image Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-bottom: 100px;
+    }
+
+    .gallery-grid img {
       width: 100%;
-      border-radius: 6px;
-      margin-bottom: 12px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      transition: transform 0.25s ease;
     }
 
-    /* Contact section styling */
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Media Section */
+    .media-section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    video, audio {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    /* Contact */
     #contact-section {
-      padding: 60px 20px;
-      background: #f5f5f5;
+      padding: 80px 20px;
+      background: #f4f4f4;
     }
 
     #contact-section .w3-card {
-      max-width: 600px;
+      max-width: 650px;
       margin: auto;
-      padding: 20px;
     }
 
-    .w3-button:hover {
-      opacity: 0.85;
+    input, textarea {
+      width: 100%;
+      margin-bottom: 14px;
+      padding: 10px;
+    }
+
+    /* Dark Mode */
+    body.dark {
+      background: #111;
+      color: #eee;
+    }
+
+    body.dark #contact-section {
+      background: #181818;
+    }
+
+    body.dark .w3-card {
+      background: #222 !important;
+      color: #eee;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 1000;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      margin: auto;
+      position: absolute;
+      inset: 0;
     }
   </style>
+
   <script>
     function openLightbox(src) {
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox').style.display = 'block';
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox").style.display = "block";
     }
+
     function closeLightbox() {
-      document.getElementById('lightbox').style.display = 'none';
+      document.getElementById("lightbox").style.display = "none";
     }
+
     function toggleTheme() {
-      document.body.classList.toggle('dark');
+      document.body.classList.toggle("dark");
     }
   </script>
-  <style>
-    body.dark { background: #111; color: #eee; }
-    body.dark .w3-card { background: #222 !important; }
-    body.dark .w3-bar-item { color: #fff !important; }
-    .lightbox {
-      display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000;
-    }
-    .lightbox img {
-      max-width:90%; max-height:90%; margin:auto; position:absolute; top:0; bottom:0; left:0; right:0;
-    }
-  </style>
 </head>
+
 <body>
-  <div class="w3-content" style="max-width:1500px">
+<div class="w3-content" style="max-width:1500px">
 
-    <!-- Header -->
-    <header class="w3-panel w3-center" style="padding:128px 16px">
-      <h1 class="w3-xlarge">VISUAL STORYTELLER</h1>
-      <h1>Albert Escobar</h1>
+<!-- Header -->
+<header class="w3-panel w3-center" style="padding:120px 16px">
+  <h1 class="w3-xlarge">VISUAL STORYTELLER</h1>
+  <h1>Albert Escobar</h1>
 
-      <div class="w3-padding-32">
-        <div class="w3-bar w3-border w3-round-large">
-          <a href="https://www.youtube.com/@AlbertEscobar-p9i" class="w3-bar-item w3-button">YouTube</a>
-          <a href="Albert_Escobar_Resume.pdf" class="w3-bar-item w3-button w3-light-grey">Resume</a>
-          <a href="https://vimeo.com/user250468230" class="w3-bar-item w3-button">Vimeo</a>
-          <a href="https://www.linkedin.com/in/albert-escobar-42b27738a/" class="w3-bar-item w3-button w3-light-grey">LinkedIn</a>
-          <a href="#contact-section" class="w3-bar-item w3-button w3-red">Contact</a>
-        </div>
-      </div>
-    </header>
-
-<button onclick="toggleTheme()" class="w3-button w3-black w3-round-large" style="position:fixed; bottom:20px; right:20px; z-index:999;">Toggle Theme</button>
-
-    <!-- Intro Section -->
-    <section class="intro-text w3-center w3-animate-opacity">
-      <p>Hello! I'm Noe Alberto Escobar Medina, but I go by Albert for simplicity. I am a creative and driven media production student with a strong background in photography, cinematography, storytelling, and visual arts. My time at Howard Community College has allowed me not only to express my full creativity but also to learn hands-on everything there is to know about video and audio production.</p>
-
-      <p>My time at HCC has also allowed me to meet and collaborate with my fellow creative classmates to produce well-made projects, including music videos, interview pieces, and audio works. I have always been passionate about creating impactful and polished work across film and television. I have experience in script writing, music production, and illustration to support a dynamic storytelling vision for all projects I happen to work on.</p>
-
-      <p>Outside of media, I have a background in management and training through supervisor roles in a family-run janitorial business. I was responsible for training employees, communicating with business owners, and assisting with cleaning tasks to ensure top-quality results.</p>
-    </section>
-
-    <!-- Photo Grid -->
-    <div class="w3-row-padding gallery" style="margin-bottom:90px">
-      <div class="w3-half">
-        <img onclick="openLightbox('Tower.jpg')" src="Tower.jpg" alt="Tower" />
-        <img onclick="openLightbox('Lodge.JPG')" src="Lodge.JPG" alt="Lodge" />
-        <img onclick="openLightbox('Boston.jpg')" src="Boston.jpg" alt="Boston" />
-        <img onclick="openLightbox('Plant.JPG')" src="Plant.JPG" alt="Plant" />
-        <img onclick="openLightbox('Diner.JPG')" src="Diner.JPG" alt="Diner" />
-        <img onclick="openLightbox('Baggage.JPEG')" src="Baggage.JPEG" alt="Baggage" />
-        <img onclick="openLightbox('A320.jpg')" src="A320.jpg" alt="A320" />
-      </div>
-
-      <div class="w3-half">
-        <img onclick="openLightbox('placeholder1.jpg')" src="placeholder1.jpg" alt="Photo" />
-        <img onclick="openLightbox('placeholder2.jpg')" src="placeholder2.jpg" alt="Photo" />
-        <img onclick="openLightbox('placeholder3.jpg')" src="placeholder3.jpg" alt="Photo" />
-        <img onclick="openLightbox('placeholder4.jpg')" src="placeholder4.jpg" alt="Photo" />
-        <img onclick="openLightbox('placeholder5.jpg')" src="placeholder5.jpg" alt="Photo" />
-        <img onclick="openLightbox('placeholder6.jpg')" src="placeholder6.jpg" alt="Photo" />
-      </div>
+  <div class="w3-padding-32">
+    <div class="w3-bar w3-border w3-round-large">
+      <a href="https://www.youtube.com/@AlbertEscobar-p9i" class="w3-bar-item w3-button">YouTube</a>
+      <a href="Albert_Escobar_Resume.pdf" class="w3-bar-item w3-button w3-light-grey">Resume</a>
+      <a href="https://vimeo.com/user250468230" class="w3-bar-item w3-button">Vimeo</a>
+      <a href="https://www.linkedin.com/in/albert-escobar-42b27738a/" class="w3-bar-item w3-button w3-light-grey">LinkedIn</a>
+      <a href="#contact-section" class="w3-bar-item w3-button w3-red">Contact</a>
     </div>
-
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-      <img id="lightbox-img" src="" alt="Expanded" />
-    </div>
-
-      <div class="w3-half">
-        <img src="placeholder1.jpg" alt="Photo" />
-        <img src="placeholder2.jpg" alt="Photo" />
-        <img src="placeholder3.jpg" alt="Photo" />
-        <img src="placeholder4.jpg" alt="Photo" />
-        <img src="placeholder5.jpg" alt="Photo" />
-        <img src="placeholder6.jpg" alt="Photo" />
-      </div>
-    </div>
-
-    <!-- Contact Section -->
-    <section id="contact-section" class="w3-center">
-      <h2>Contact</h2>
-      <div class="w3-card w3-round-large w3-white w3-padding-large w3-animate-bottom">
-        <p><i class="fa fa-phone"></i> Telephone: 240-581-3392</p>
-        <p><i class="fa fa-envelope"></i> Email: noealberto.escobarmedina@gmail.com</p>
-      </div>
-    </section>
-
   </div>
+</header>
+
+<button onclick="toggleTheme()" class="w3-button w3-black w3-round-large"
+style="position:fixed; bottom:20px; right:20px; z-index:999;">
+Toggle Theme
+</button>
+
+<!-- Intro -->
+<section class="intro-text w3-center">
+  <p>Hello! I'm Noe Alberto Escobar Medina, but I go by Albert for simplicity...</p>
+</section>
+
+<!-- Image Gallery -->
+<section class="gallery-grid">
+  <img src="Tower.jpg" onclick="openLightbox(this.src)">
+  <img src="Lodge.JPG" onclick="openLightbox(this.src)">
+  <img src="Boston.jpg" onclick="openLightbox(this.src)">
+  <img src="Plant.JPG" onclick="openLightbox(this.src)">
+  <img src="Diner.JPG" onclick="openLightbox(this.src)">
+  <img src="Baggage.JPEG" onclick="openLightbox(this.src)">
+  <img src="A320.jpg" onclick="openLightbox(this.src)">
+</section>
+
+<!-- Media Section -->
+<section class="media-section">
+  <h2 class="w3-center">Video & Audio Work</h2>
+
+  <div class="media-grid">
+    <video controls>
+      <source src="sample-video.mp4" type="video/mp4">
+    </video>
+
+    <audio controls>
+      <source src="sample-audio.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact-section" class="w3-center">
+  <h2>Get In Touch</h2>
+
+  <div class="w3-card w3-round-large w3-padding-large">
+    <form action="mailto:noealberto.escobarmedina@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message"></textarea>
+      <button class="w3-button w3-red w3-round-large w3-margin-top">Send Message</button>
+    </form>
+
+    <p class="w3-margin-top">
+      <i class="fa fa-phone"></i> 240-581-3392<br>
+      <i class="fa fa-envelope"></i> noealberto.escobarmedina@gmail.com
+    </p>
+  </div>
+</section>
+
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img">
+</div>
+
 </body>
 </html>
