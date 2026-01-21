@@ -1,169 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Albert Escobar – Visual Storyteller</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Albert Escobar — Visual Storyteller</title>
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap">
+<!-- Mid-century inspired typography -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      font-family: "Inter", sans-serif;
-      transition: background 0.3s, color 0.3s;
-    }
+<style>
+:root {
+  --bg: #0e0e0e;
+  --text: #eaeaea;
+  --muted: #9a9a9a;
+  --accent: #b33a2b;
+  --card: #161616;
+}
 
-    h1, h2, h3 {
-      font-family: "Playfair Display", serif;
-      letter-spacing: 2px;
-    }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0.3px;
+  transition: background 0.4s, color 0.4s;
+}
 
-    .intro-text {
-      max-width: 900px;
-      margin: 0 auto 80px auto;
-      line-height: 1.8;
-      font-size: 17px;
-    }
+h1, h2 {
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+}
 
-    /* Image Grid */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px;
-      margin-bottom: 100px;
-    }
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
 
-    .gallery-grid img {
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-      transition: transform 0.25s ease;
-    }
+.w3-content {
+  max-width: 1500px;
+}
 
-    .gallery-grid img:hover {
-      transform: scale(1.03);
-    }
+/* Header */
+header {
+  padding: 160px 20px 120px;
+}
 
-    /* Media Section */
-    .media-section {
-      max-width: 1100px;
-      margin: auto;
-      padding: 80px 20px;
-    }
+header h1:last-child {
+  margin-top: 12px;
+}
 
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-    }
+header .w3-bar {
+  border: none;
+  background: transparent;
+}
 
-    video, audio {
-      width: 100%;
-      border-radius: 10px;
-    }
+header .w3-button {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  opacity: 0.75;
+}
 
-    /* Contact */
-    #contact-section {
-      padding: 80px 20px;
-      background: #f4f4f4;
-    }
+header .w3-button:hover {
+  opacity: 1;
+  background: transparent !important;
+  color: var(--accent);
+}
 
-    #contact-section .w3-card {
-      max-width: 650px;
-      margin: auto;
-    }
+/* Intro */
+.intro-text {
+  max-width: 760px;
+  margin: 0 auto 120px;
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--muted);
+}
 
-    input, textarea {
-      width: 100%;
-      margin-bottom: 14px;
-      padding: 10px;
-    }
+/* Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  padding: 0 20px 140px;
+}
 
-    /* Dark Mode */
-    body.dark {
-      background: #111;
-      color: #eee;
-    }
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+  cursor: pointer;
+}
 
-    body.dark #contact-section {
-      background: #181818;
-    }
+.gallery-grid img:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 50px 90px rgba(0,0,0,0.6);
+}
 
-    body.dark .w3-card {
-      background: #222 !important;
-      color: #eee;
-    }
+/* Contact */
+#contact-section {
+  background: var(--card);
+  padding: 140px 20px;
+}
 
-    /* Lightbox */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      z-index: 1000;
-    }
+#contact-section h2 {
+  margin-bottom: 40px;
+}
 
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      margin: auto;
-      position: absolute;
-      inset: 0;
-    }
-  </style>
+.w3-card {
+  background: transparent;
+  box-shadow: none;
+  max-width: 520px;
+  margin: auto;
+}
 
-  <script>
-    function openLightbox(src) {
-      document.getElementById("lightbox-img").src = src;
-      document.getElementById("lightbox").style.display = "block";
-    }
+input, textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #444;
+  color: var(--text);
+  padding: 14px 6px;
+  margin-bottom: 26px;
+}
 
-    function closeLightbox() {
-      document.getElementById("lightbox").style.display = "none";
-    }
+input:focus, textarea:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
 
-    function toggleTheme() {
-      document.body.classList.toggle("dark");
-    }
-  </script>
+button {
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 12px 28px;
+  letter-spacing: 2px;
+  transition: background 0.3s, color 0.3s;
+}
+
+button:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 1000;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+
+/* Theme toggle */
+.toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #000;
+  border: 1px solid #444;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+  font-size: 11px;
+}
+
+/* Light mode */
+body.light {
+  --bg: #f6f5f2;
+  --text: #111;
+  --muted: #555;
+  --card: #ffffff;
+}
+</style>
+
+<script>
+function openLightbox(src) {
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox").style.display = "block";
+}
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+function toggleTheme() {
+  document.body.classList.toggle("light");
+}
+</script>
 </head>
 
 <body>
-<div class="w3-content" style="max-width:1500px">
+<div class="w3-content">
 
-<!-- Header -->
-<header class="w3-panel w3-center" style="padding:120px 16px">
-  <h1 class="w3-xlarge">VISUAL STORYTELLER</h1>
+<header class="w3-center">
+  <h1 class="w3-small">Visual Storyteller</h1>
   <h1>Albert Escobar</h1>
 
   <div class="w3-padding-32">
-    <div class="w3-bar w3-border w3-round-large">
+    <div class="w3-bar">
       <a href="https://www.youtube.com/@AlbertEscobar-g1t" class="w3-bar-item w3-button">YouTube</a>
-      <a href="Albert_Escobar_Resume.pdf" class="w3-bar-item w3-button w3-light-grey">Resume</a>
+      <a href="Albert_Escobar_Resume.pdf" class="w3-bar-item w3-button">Resume</a>
       <a href="https://vimeo.com/user250468230" class="w3-bar-item w3-button">Vimeo</a>
-      <a href="https://www.linkedin.com/in/albert-escobar-42b27738a/" class="w3-bar-item w3-button w3-light-grey">LinkedIn</a>
-      <a href="#contact-section" class="w3-bar-item w3-button w3-red">Contact</a>
+      <a href="https://www.linkedin.com/in/albert-escobar-42b27738a/" class="w3-bar-item w3-button">LinkedIn</a>
+      <a href="#contact-section" class="w3-bar-item w3-button">Contact</a>
     </div>
   </div>
 </header>
 
-<button onclick="toggleTheme()" class="w3-button w3-black w3-round-large"
-style="position:fixed; bottom:20px; right:20px; z-index:999;">
-Toggle Theme
-</button>
-
-<!-- Intro -->
 <section class="intro-text w3-center">
-  <p>Hello! I'm Noe Alberto Escobar Medina, but I go by Albert for simplicity...</p>
+  <p>
+    Hello — I’m Noe Alberto Escobar Medina, but I go by Albert.
+    My work focuses on atmosphere, composition, and visual storytelling
+    rooted in aviation, architecture, and quiet moments in motion.
+  </p>
 </section>
 
-<!-- Image Gallery -->
 <section class="gallery-grid">
   <img src="Tower.jpg" onclick="openLightbox(this.src)">
   <img src="Lodge.JPG" onclick="openLightbox(this.src)">
@@ -174,19 +233,16 @@ Toggle Theme
   <img src="A320.jpg" onclick="openLightbox(this.src)">
 </section>
 
-<!-- Contact -->
 <section id="contact-section" class="w3-center">
-  <h2>Get In Touch</h2>
-
-  <div class="w3-card w3-round-large w3-padding-large">
+  <h2>Contact</h2>
+  <div class="w3-card">
     <form action="mailto:noealberto.escobarmedina@gmail.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message"></textarea>
-      <button class="w3-button w3-red w3-round-large w3-margin-top">Send Message</button>
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="message" rows="5" placeholder="Message"></textarea>
+      <button>Send</button>
     </form>
-
-    <p class="w3-margin-top">
+    <p class="w3-margin-top w3-small">
       <i class="fa fa-phone"></i> 240-581-3392<br>
       <i class="fa fa-envelope"></i> noealberto.escobarmedina@gmail.com
     </p>
@@ -195,7 +251,8 @@ Toggle Theme
 
 </div>
 
-<!-- Lightbox -->
+<button class="toggle" onclick="toggleTheme()">Toggle</button>
+
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
   <img id="lightbox-img">
 </div>
